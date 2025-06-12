@@ -3,7 +3,7 @@ from telegram import Update, Bot, InputMediaPhoto
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-ADMIN_USERNAME = "@SAKIB_7XZ"
+ADMIN_ID = 6010980234  
 YOUTUBE_LINK = "https://youtube.com/@banglaentertainment077?si=QsjcxZlR2S-eQRvh"
 
 user_data = {}
@@ -19,7 +19,7 @@ async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if user_id in user_data and user_data[user_id]["step"] == "awaiting_screenshot":
         photo_file = update.message.photo[-1].file_id
         caption = f"✅ Join request from @{update.effective_user.username or 'NoUsername'} (ID: {user_id})\nApprove?"
-        await context.bot.send_photo(chat_id=ADMIN_USERNAME, photo=photo_file, caption=caption)
+        await context.bot.send_photo(chat_id=ADMIN_ID, photo=photo_file, caption=caption)
         await update.message.reply_text("✅ ধন্যবাদ! আপনার রিকোয়েস্ট অ্যাডমিনের কাছে পাঠানো হয়েছে।")
 
 async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
